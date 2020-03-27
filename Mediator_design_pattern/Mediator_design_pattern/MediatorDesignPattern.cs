@@ -7,18 +7,18 @@ namespace Mediator_design_pattern
         public static void Main()
         {
             ControlTowerMediator controlTowerMediator = new ControlTowerMediator();
-            Airplane sparrow101 = new Airplane(controlTowerMediator);
-            Runway mainRunway = new Runway(controlTowerMediator);
+            Airplane airplane = new Airplane(controlTowerMediator);
+            Runway runway = new Runway(controlTowerMediator);
 
-            //sparrow101.Land();
+            controlTowerMediator.RegisterAirVehicle(airplane);
+            controlTowerMediator.RegisterLandingPlatform(runway);
 
-            controlTowerMediator.RegisterAirVehicle(sparrow101);
-            controlTowerMediator.RegisterRunway(mainRunway);
-
-            sparrow101.Land();
-            System.Threading.Thread.Sleep(1000);
-            sparrow101.Land();
-            sparrow101.TakeOf();
+            // Calles land two times to show that a plan canot land when a runway is ocupied.
+            // This is only to prove a point, since in real life toy wouldn't try to land
+            // the same aitplane twho times.
+            airplane.Land();
+            airplane.Land();
+            airplane.TakeOf();
 
         }
     }

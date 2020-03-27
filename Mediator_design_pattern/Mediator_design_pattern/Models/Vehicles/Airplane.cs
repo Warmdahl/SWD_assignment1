@@ -21,7 +21,6 @@ namespace Mediator_design_pattern
             if ((controlTowerMediator.AirVeicleLandingStatus())&&(controlTowerMediator.IsLandingPlatformEmpty()))
             {
                 Console.WriteLine("Airplane: Successfully Landed.");
-                //this.controlTowerMediator.Notify(this, Action.landing);
             }
             else
             {

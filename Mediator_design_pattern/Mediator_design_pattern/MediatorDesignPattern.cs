@@ -10,8 +10,6 @@ namespace Mediator_design_pattern
             Airplane sparrow101 = new Airplane(controlTowerMediator);
             Runway mainRunway = new Runway(controlTowerMediator);
 
-            //sparrow101.Land();
-
             controlTowerMediator.RegisterAirVehicle(sparrow101);
             controlTowerMediator.RegisterRunway(mainRunway);
 

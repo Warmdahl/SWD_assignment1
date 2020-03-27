@@ -8,14 +8,12 @@ namespace Mediator_design_pattern
 {
     class Runway : LandingPlatform
     {
-
         //Binds the component to the mediator (control tower)
         public Runway(IControltowerMediator controltowerMediator)
         {
             this.controlTowerMediator = controltowerMediator;
         }
         
-
         //Implements the land function from ICommand
         public override void Land()
         {

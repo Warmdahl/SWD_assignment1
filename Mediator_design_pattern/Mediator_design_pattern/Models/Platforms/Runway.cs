@@ -8,16 +8,17 @@ namespace Mediator_design_pattern
 {
     class Runway : LandingPlatform
     {
-
-
+        //Binds the component to the mediator (control tower)
         public Runway(IControltowerMediator controltowerMediator)
         {
             this.controlTowerMediator = controltowerMediator;
         }
         
+        //Implements the land function from ICommand
         public override void Land()
         {
-            if(this.controlTowerMediator.IsLandingPlatformEmpty())
+            //Checks with the mediator if the landing platform is empty for landing
+            if (this.controlTowerMediator.IsLandingPlatformEmpty()) 
             {
                 Console.WriteLine("Runway: Landing permission granted - Runway empty.");
                 this.controlTowerMediator.Notify(this, Action.landingOK);
@@ -28,8 +29,10 @@ namespace Mediator_design_pattern
             }
         }
 
+        //Implements the TakeOf function from ICommand
         public override void TakeOf()
         {
+            //Checks with the mediator if the landing platform is empty for takeoff
             if (!this.controlTowerMediator.IsLandingPlatformEmpty())
             {
                 Console.WriteLine("Runway: Take-Off permission granted.");

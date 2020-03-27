@@ -8,13 +8,16 @@ namespace Mediator_design_pattern
 {
     class Airplane : AirVehicle
     {
+        //Binds the component to the mediator (Control Tower)
         public Airplane(IControltowerMediator controlTowerMediator)
         {
             this.controlTowerMediator = controlTowerMediator;
         }
 
+        //Implements the Land function from ICommand
         public override void Land()
         {
+            //Checks with the mediator for the airplanes landing status and if the landing platform is empty
             if ((controlTowerMediator.AirVeicleLandingStatus())&&(controlTowerMediator.IsLandingPlatformEmpty()))
             {
                 Console.WriteLine("Airplane: Successfully Landed.");
@@ -27,8 +30,10 @@ namespace Mediator_design_pattern
             }
         }
 
+        //Implements the TakeOf function from ICommand
         public override void TakeOf()
         {
+            //Checks with mediator for the airplanes takeoff status.
             if (controlTowerMediator.AirVeicleLandingStatus())
             {
                 Console.WriteLine("Airplane: Requesting take off.");

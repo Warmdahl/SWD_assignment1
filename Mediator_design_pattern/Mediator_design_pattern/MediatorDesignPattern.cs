@@ -1,20 +1,25 @@
-﻿using Mediator_design_pattern.Moduls;
-using System;
+﻿using System;
 
-namespace Mediator_design_patternv2
+namespace Mediator_design_pattern
 {
     class MediatorDesignPattern
     {
         public static void Main()
         {
-            IATCMediator atcMediator = new ATCMediator();
-            Flight sparrow101 = new Flight(atcMediator);
-            Runway mainRunway = new Runway(atcMediator);
-            atcMediator.RegisterFlight(sparrow101);
-            atcMediator.RegisterRunway(mainRunway);
-            sparrow101.getReady();
-            mainRunway.Land();
+            ControlTowerMediator controlTowerMediator = new ControlTowerMediator();
+            Airplane sparrow101 = new Airplane(controlTowerMediator);
+            Runway mainRunway = new Runway(controlTowerMediator);
+
             sparrow101.Land();
+
+            controlTowerMediator.RegisterAirVehicle(sparrow101);
+            controlTowerMediator.RegisterRunway(mainRunway);
+
+            //sparrow101.Land();
+            //System.Threading.Thread.Sleep(1000);
+            //sparrow101.Land();
+            //sparrow101.TakeOf();
+
         }
     }
 }

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mediator_design_pattern.Moduls
+namespace Mediator_design_pattern
 {
-    interface ICommand
+    public interface ICommand
     {
-        void Land();
+        public void Land();
+        public void TakeOf();
     }
 }

@@ -18,7 +18,7 @@ namespace Mediator_design_pattern
         public override void Land()
         {
             //Checks with the mediator for the airplanes landing status and if the landing platform is empty
-            if ((controlTowerMediator.AirVeicleLandingStatus())&&(controlTowerMediator.IsLandingPlatformEmpty()))
+            if ((controlTowerMediator.AirVehicleLandingStatus())&&(controlTowerMediator.IsLandingPlatformEmpty()))
             {
                 Console.WriteLine("Airplane: Successfully Landed.");
             }
@@ -29,14 +29,14 @@ namespace Mediator_design_pattern
             }
         }
 
-        //Implements the TakeOf function from ICommand
-        public override void TakeOf()
+        //Implements the TakeOff function from ICommand
+        public override void TakeOff()
         {
             //Checks with mediator for the airplanes takeoff status.
-            if (controlTowerMediator.AirVeicleLandingStatus())
+            if (controlTowerMediator.AirVehicleLandingStatus())
             {
                 Console.WriteLine("Airplane: Requesting take off.");
-                this.controlTowerMediator.Notify(this, Action.requestTakeof);
+                this.controlTowerMediator.Notify(this, Action.requestTakeoff);
             }
             else
             {

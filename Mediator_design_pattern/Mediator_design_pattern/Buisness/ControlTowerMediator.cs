@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace Mediator_design_pattern
 {
-    // Enumeration Action that defines the different actions or events that can ocure in the 
-    // componment classes. The actions that the concrete mediator class will act upon.
+    // Enumeration Action that defines the different actions or events that can occur in the 
+    // component classes. The actions that the concrete mediator class will act upon.
     public enum Action
     {
         requestLanding,
         landingOK,
 
-        requestTakeof,
-        takeOfOK
+        requestTakeoff,
+        takeOffOK
     }
 
     // Concrete ControlTowerMediator implements the interface and the behaviour dependent 
-    // on actions from the componment classes.
+    // on actions from the component classes.
 
     public class ControlTowerMediator : IControltowerMediator
     {
@@ -35,34 +35,34 @@ namespace Mediator_design_pattern
             isRunwayEmpty_ = true;
         }
 
-        // IsLandingPlatformEmpty lets the conponments know the status of the LandingPlatform
+        // IsLandingPlatformEmpty lets the components know the status of the LandingPlatform
         // held by the ControlTowerMediator.
         public bool IsLandingPlatformEmpty()
         {
             return isRunwayEmpty_;
         }
 
-        // IsLandingPlatformEmpty lets the conponments know the status of the LandingPlatform
+        // IsLandingPlatformEmpty lets the components know the status of the LandingPlatform
         // held by the ControlTowerMediator.
-        public bool AirVeicleLandingStatus()
+        public bool AirVehicleLandingStatus()
         {
             return landingStatus_;
         }
 
-        // Binds a concrete AirVehicle to the ControlTowerMediator so they can comuicate.
+        // Binds a concrete AirVehicle to the ControlTowerMediator so they can communicate.
         public void RegisterAirVehicle(AirVehicle airVehicle)
         {
             this.airVehicle_ = airVehicle;
         }
 
-        // Binds a concrete RegisterLandingPlatform to the ControlTowerMediator so they can comuicate.
+        // Binds a concrete RegisterLandingPlatform to the ControlTowerMediator so they can communicate.
         public void RegisterLandingPlatform(LandingPlatform landingPlatform)
         {
             this.landingPlatform_ = landingPlatform;
         }
 
-        // Notify is used by the componments to comunicate events based on actions to ControlTowerMediator
-        // Notify reacts to these actions and pass exicution to other conponments.
+        // Notify is used by the components to communicate events based on actions to ControlTowerMediator
+        // Notify reacts to these actions and pass execution to other components.
         public void Notify(object sender, Action action)
         {
             try
@@ -77,13 +77,13 @@ namespace Mediator_design_pattern
                         airVehicle_.Land();
                         isRunwayEmpty_ = false;
                         break;
-                    case Action.requestTakeof:
-                        this.landingPlatform_.TakeOf();
+                    case Action.requestTakeoff:
+                        this.landingPlatform_.TakeOff();
                         break;
-                    case Action.takeOfOK:
+                    case Action.takeOffOK:
                         landingStatus_ = false;
                         isRunwayEmpty_ = true;
-                        this.airVehicle_.TakeOf();
+                        this.airVehicle_.TakeOff();
                         break;
                     default:
                         break;

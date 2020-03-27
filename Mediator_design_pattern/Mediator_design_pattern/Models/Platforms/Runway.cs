@@ -29,14 +29,14 @@ namespace Mediator_design_pattern
             }
         }
 
-        //Implements the TakeOf function from ICommand
-        public override void TakeOf()
+        //Implements the TakeOff function from ICommand
+        public override void TakeOff()
         {
             //Checks with the mediator if the landing platform is empty for takeoff
             if (!this.controlTowerMediator.IsLandingPlatformEmpty())
             {
                 Console.WriteLine("Runway: Take-Off permission granted.");
-                this.controlTowerMediator.Notify(this, Action.takeOfOK);
+                this.controlTowerMediator.Notify(this, Action.takeOffOK);
             }
             else
             {

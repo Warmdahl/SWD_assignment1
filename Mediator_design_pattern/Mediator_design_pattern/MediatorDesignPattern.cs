@@ -13,12 +13,12 @@ namespace Mediator_design_pattern
             controlTowerMediator.RegisterAirVehicle(airplane);
             controlTowerMediator.RegisterLandingPlatform(runway);
 
-            // Calles land two times to show that a plan canot land when a runway is ocupied.
-            // This is only to prove a point, since in real life toy wouldn't try to land
-            // the same aitplane twho times.
+            // Calls land two times to show that a plan cannot land when a runway is occupied.
+            // This is only to prove a point, since in real life you wouldn't try to land
+            // the same airplane twice.
             airplane.Land();
             airplane.Land();
-            airplane.TakeOf();
+            airplane.TakeOff();
 
         }
     }
